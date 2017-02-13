@@ -1,0 +1,104 @@
+#titleBorder{
+    height: 60px;
+    border: 1px solid #ffffff;
+    font-size: 100%;
+    font-stretch: expanded;
+    font-weight: bolder;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+
+
+.topBit{
+    height: 60%;
+    max-height: 600px;
+}
+
+.sectionCap{
+    background-color: #dae3f0;
+    border: 0px solid #dae3f0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    color:#444444;
+    text-align: center;
+    font-weight: 700;
+    font-size: 90%;
+
+}
+
+.bottomBit{
+    align-content: center;
+}
+
+.leftSide{
+    float: left;
+    width: 250px;
+    height: inherit;
+    font-weight: bold;
+}
+
+.inaneTextBox{
+    height: 360px;
+    width: inherit;
+    border: 15px solid #ffcc00;
+    background-color: #ffcc00;
+    display: block;
+    border-radius: 8px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-weight: bolder;
+}
+
+.rightSide{
+    margin-left: 251px;
+}
+
+th.semesterBlock{
+    background-color: #e8e8e8;
+    border: 1px solid #cbe5ff;
+    border-radius: 7px;
+    max-height: 100px;
+    width:33%;
+}
+
+.semesterTitle{
+    font-weight: bolder;
+    font-size: 80%;
+    padding-right: 70%;
+    padding-bottom: 70px;
+}
+
+.validationMsg{
+    background: #990000;
+    border: solid #990000;
+    color: #ffffff;
+    font-size: 80%;
+    border-radius: 7px;
+}
+
+#courseFinder{
+    font-weight: bold;
+    font-size: 100%;
+}
+
+body{
+    margin: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+table#scheduleTable{
+    height: 400px;
+    clear: right;
+    width: 100%;
+
+}
+
+.decoratedBox{
+    padding: 5px;
+}
+
+
+
+
