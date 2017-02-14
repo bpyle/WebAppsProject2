@@ -36,12 +36,12 @@
 .leftSide{
     float: left;
     width: 250px;
-    height: inherit;
+    height: 100%;
     font-weight: bold;
 }
 
 .inaneTextBox{
-    height: 360px;
+    height: 432px;
     width: inherit;
     border: 15px solid #ffcc00;
     background-color: #ffcc00;
@@ -121,6 +121,10 @@ table#scheduleTable{
     font-weight: bold;
     font-size:60%;
     color: #444444;
+}
+
+form{
+    font-size:80%;
 }
 
 
