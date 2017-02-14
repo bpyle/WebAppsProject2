@@ -192,11 +192,11 @@ Barry! Breakfast is ready!
             semTitle.setAttribute("id", "semTitle" + i + j);
             td.appendChild(semTitle);
 
-            for(var h = 0; h < thePlan.years[i].term[j].course.length; h++) {
+            for(var h = 0; h < thePlan.yearsArr[i].term[j].course.length; h++) {
                 var courseBox = document.createElement('DIV');
                 courseBox.setAttribute("class", "courseBox");
 
-                courseBox.innerHTML += thePlan.years[i].term[j].course[h].courseDes + " " + thePlan.years[i].term[j].course[h].courseName;
+                courseBox.innerHTML += thePlan.yearsArr[i].term[j].course[h].courseDes + " " + thePlan.yearsArr[i].term[j].course[h].courseName;
                 courseBox.innerHTML += " ";
 
                 td.appendChild(courseBox);
