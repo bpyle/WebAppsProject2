@@ -41,7 +41,7 @@
     var termA = new term(
         [
             new course("CS-4220", "Web Apps"),
-            new course("432422r2r2r2r234r234r32324r", "Theo II"),
+            new course("BEGE-4343", "Theo II"),
             new course("CS-4220", "Web Apps"),
             new course("BEGE-4343", "Theo II"),
             new course("CS-4220", "Web Apps"),
@@ -200,18 +200,22 @@ Barry! Breakfast is ready!
             var td = document.createElement('TH')
             td.setAttribute("class", "semesterBlock");
 
-            var courseBox = document.createElement('DIV');
-            courseBox.setAttribute("class", "courseBox");
-            for(var h = 0; h < thePlan.years[i].term[j].course.length; h++) {
-                courseBox.innerHTML += thePlan.years[i].term[j].course[h].courseDes + " " + thePlan.years[i].term[j].course[h].courseName;
-                courseBox.innerHTML += " ";
-            }
 
             var semTitle = document.createElement('DIV');
             semTitle.setAttribute("class", "semesterTitle");
             semTitle.setAttribute("id", "semTitle" + i + j);
             td.appendChild(semTitle);
-            td.appendChild(courseBox);
+
+            for(var h = 0; h < thePlan.years[i].term[j].course.length; h++) {
+                var courseBox = document.createElement('DIV');
+                courseBox.setAttribute("class", "courseBox");
+
+                courseBox.innerHTML += thePlan.years[i].term[j].course[h].courseDes + " " + thePlan.years[i].term[j].course[h].courseName;
+                courseBox.innerHTML += " ";
+
+                td.appendChild(courseBox);
+            }
+
             tr.appendChild(td);
         }
         schedule.appendChild(tr);
