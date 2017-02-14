@@ -71,8 +71,8 @@ th.semesterBlock{
     font-weight: bolder;
     font-size: 80%;
 
-    padding-bottom: 2px;
     text-align:left;
+    margin-left: 8px;
 }
 
 .validationMsg{
@@ -112,8 +112,15 @@ table#scheduleTable{
 
 .courseBox{
     display:block;
-    font-size:60%;
 
+}
+
+.semesterBox{
+    float:left;
+    margin-left: 15px;
+    font-weight: bold;
+    font-size:60%;
+    color: #444444;
 }
 
 
