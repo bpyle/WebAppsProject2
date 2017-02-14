@@ -5,20 +5,23 @@
     <title>Web Applications</title>
     <link rel="stylesheet" type="text/css" href="PyleBurnsApePageStyle.css">
     <script language="JavaScript">
-        var plan = function(name, catYear, major, studName, currSem){
+        var plan = function(name, catYear, major, studName, currSem, years){
             this.name = name;
             this.catYear = catYear;
             this.major = major;
             this.studName = studName;
             this.currSem = currSem;
+            this.years = years;
         }
 
-        var year = function(term) {
+        var year = function(term, yearName) {
             this.term = term;
+            this.yearName = yearName;
         }
 
-        var term = function(course) {
+        var term = function(course, termName) {
             this.course = course;
+            this.termName = termName;
         }
 
         var course = function(courseDes, courseName) {
@@ -32,6 +35,67 @@
     </script>
 </head>
 <body>
+
+<script>
+    var termA = new term(
+        [
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II"),
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II"),
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II")
+        ]
+    , "Spring");
+    var termB = new term(
+        [
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II"),
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II"),
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II")
+        ], "Summer" );
+    var termC = new term(
+        [
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II"),
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II"),
+            new course("CS-4220", "Web Apps"),
+            new course("BEGE-4343", "Theo II")
+        ], "Fall");
+
+    var yearA = new year(
+        [termA, termB, termC],
+        "2017"
+    );
+
+    var yearB = new year(
+        [termA, termB, termC],
+        "2016"
+    );
+
+    var yearC = new year(
+        [termA, termB, termC],
+        "2015"
+    );
+
+    var yearD = new year(
+        [termA, termB, termC],
+        "2014"
+    );
+
+    var thePlan = new plan("Pyle_4Y", "2013-2014", "Computer Science", "Ben Pyle", termA, [yearA, yearB, yearC, yearD]);
+
+    document.getElementById("semTitle1").innerHTML = thePlan.years1.term1.termName + thePlan.years1.yearName;
+
+
+
+
+</script>
+
+
 <div id="titleBorder">
     CS-3220 Web Applications
     <p></p>
@@ -81,74 +145,7 @@ Barry! Breakfast is ready!
             SCHEDULE
         </div>
         <table id="scheduleTable" cellspacing="5" cellpadding="0">
-            <tr>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Fall 2014
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Spring 2015
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Summer 2015
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Fall 2015
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Spring 2016
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Summer 2016
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Fall 2016
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Spring 2017
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Summer 2017
-                    </div>
-                </th>
-            </tr>
-            <tr>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Fall 2017
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Spring 2018
-                    </div>
-                </th>
-                <th class="semesterBlock">
-                    <div class="semesterTitle">
-                        Summer 2018
-                    </div>
-                </th>
-            </tr>
+
         </table>
     </div>
 </div>
@@ -175,5 +172,51 @@ Barry! Breakfast is ready!
         </div>
     </div>
 </div>
+
+<script>
+
+    var schedule = document.getElementById("scheduleTable");
+
+    for(var i = 0; i < thePlan.years.length; i++){
+        var tr = document.createElement('TR');
+        for( var j = 0; j < thePlan.years[i].term.length; j++){
+            var td = document.createElement('TH')
+            td.setAttribute("class", "semesterBlock");
+
+            var courseBox = document.createElement('DIV');
+            courseBox.setAttribute("class", "courseBox");
+            for(var h = 0; h < thePlan.years[i].term[j].course.length; h++) {
+                courseBox.innerHTML += thePlan.years[i].term[j].course[h].courseDes + " " + thePlan.years[i].term[j].course[h].courseName;
+                courseBox.innerHTML += " ";
+            }
+
+            var semTitle = document.createElement('DIV');
+            semTitle.setAttribute("class", "semesterTitle");
+            semTitle.setAttribute("id", "semTitle" + i + j);
+            td.appendChild(semTitle);
+            td.appendChild(courseBox);
+            tr.appendChild(td);
+        }
+        schedule.appendChild(tr);
+    }
+
+    for(var i = 0; i < 4; i++){
+        for(var j = 0; j < 3; j++){
+
+            document.getElementById("semTitle" + i + j).innerHTML = thePlan.years[i].term[j].termName + " " + thePlan.years[i].yearName;
+
+            for(var h = 0; h < 3; h++){
+
+            }
+
+        }
+
+    }
+
+
+
+
+</script>
+
 </body>
 </html>
