@@ -4,6 +4,7 @@
 <head>
     <title>Web Applications</title>
     <link rel="stylesheet" type="text/css" href="PyleBurnsApePageStyle.css">
+    <script type="text/javascript" src="validationForm.js"></script>
     <script language="JavaScript">
         var plan = function(name, catYear, major, studName, currSem, years){
             this.name = name;
@@ -163,6 +164,22 @@ Barry! Breakfast is ready!
             <a href="cs3220.html">
                 My Personal Page
             </a>
+
+            <div class="validate">
+                <h3> Validation Form </h3>
+
+                <form name="valform" onsubmit="return(validate())">
+                    <label> register for our form </label>
+                    <br> Username: <input type="text" name="user" value=""/> <br>
+                    enter a valid email: <input type="email" name="useremail"> <br>
+                    password: <input type="password" name="pass"/> <br>
+                    confirm password: <input type="password" name="passcomf"/> <br>
+                    <input type="submit" value="register" onchange=validate()>
+
+                </form>
+
+            </div>
+
         </div>
     </div>
 
