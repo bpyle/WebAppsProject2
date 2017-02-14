@@ -6,18 +6,19 @@
     <link rel="stylesheet" type="text/css" href="PyleBurnsApePageStyle.css">
     <script type="text/javascript" src="validationForm.js"></script>
     <script language="JavaScript">
-        var plan = function(name, catYear, major, studName, currSem, years){
+        var plan = function(name, catYear, major, studName, currSem, yearsArr){
             this.name = name;
             this.catYear = catYear;
             this.major = major;
             this.studName = studName;
             this.currSem = currSem;
-            this.years = years;
+            this.yearsArr = yearsArr;
         }
 
-        var year = function(term, yearName) {
+        var year = function(term, yearStart, yearEnd) {
             this.term = term;
-            this.yearName = yearName;
+            this.yearStart = yearStart;
+            this.yearEnd = yearEnd;
         }
 
         var term = function(course, termName) {
@@ -30,6 +31,9 @@
             this.courseName = courseName;
         }
 
+        var years = function(){
+        }
+
         function firstPopUp() {
             
         }
@@ -38,7 +42,10 @@
 <body>
 
 <script>
-    var termA = new term(
+
+    var catalogYear = "2014-2015";
+
+    var termSpring = new term(
         [
             new course("CS-4220", "Web Apps"),
             new course("432422r2r2r2r234r234r32324r", "Theo II"),
@@ -48,7 +55,7 @@
             new course("BEGE-4343", "Theo II")
         ]
     , "Spring");
-    var termB = new term(
+    var termSummer = new term(
         [
             new course("CS-4220", "Web Apps"),
             new course("BEGE-4343", "Theo II"),
@@ -57,7 +64,7 @@
             new course("CS-4220", "Web Apps"),
             new course("BEGE-4343", "Theo II")
         ], "Summer" );
-    var termC = new term(
+    var termFall = new term(
         [
             new course("CS-4220", "Web Apps"),
             new course("BEGE-4343", "Theo II"),
@@ -67,29 +74,16 @@
             new course("BEGE-4343", "Theo II")
         ], "Fall");
 
-    var yearA = new year(
-        [termA, termB, termC],
-        "2017"
-    );
+    var yearsForPlan = [];
+    var firstYear = parseInt(catalogYear.substr(0, 4));
+    for(var i = 0; i < 4; i++){
+        yearsForPlan[i] = new year([termFall, termSpring, termSummer], firstYear, firstYear+1);
+        firstYear++;
 
-    var yearB = new year(
-        [termA, termB, termC],
-        "2016"
-    );
+    }
 
-    var yearC = new year(
-        [termA, termB, termC],
-        "2015"
-    );
+    var thePlan = new plan("Pyle_4Y", "2013-2014", "Computer Science", "Ben Pyle", termFall, yearsForPlan);
 
-    var yearD = new year(
-        [termA, termB, termC],
-        "2014"
-    );
-
-    var thePlan = new plan("Pyle_4Y", "2013-2014", "Computer Science", "Ben Pyle", termA, [yearA, yearB, yearC, yearD]);
-
-    document.getElementById("semTitle1").innerHTML = thePlan.years1.term1.termName + thePlan.years1.yearName;
 
 
 
@@ -154,16 +148,9 @@ Barry! Breakfast is ready!
 <div class="bottomBit">
     <div class="leftSide">
         <div class="sectionCap">
-            LINKS
+            Validation Form
         </div>
         <div class="decoratedBox">
-            <a href="../peopleschoice/index.php">
-                Official Course Page
-            </a>
-            <p></p>
-            <a href="cs3220.html">
-                My Personal Page
-            </a>
 
             <div class="validate">
                 <h3> Validation Form </h3>
@@ -194,9 +181,9 @@ Barry! Breakfast is ready!
 
     var schedule = document.getElementById("scheduleTable");
 
-    for(var i = 0; i < thePlan.years.length; i++){
+    for(var i = 0; i < thePlan.yearsArr.length; i++){
         var tr = document.createElement('TR');
-        for( var j = 0; j < thePlan.years[i].term.length; j++){
+        for( var j = 0; j < thePlan.yearsArr[i].term.length; j++){
             var td = document.createElement('TH')
             td.setAttribute("class", "semesterBlock");
 
@@ -224,8 +211,14 @@ Barry! Breakfast is ready!
 
     for(var i = 0; i < 4; i++){
         for(var j = 0; j < 3; j++){
-
-            document.getElementById("semTitle" + i + j).innerHTML = thePlan.years[i].term[j].termName + " " + thePlan.years[i].yearName;
+            var sTitle = thePlan.yearsArr[i].term[j].termName ;
+                if(sTitle  == "Fall"){
+                    sTitle += " " + thePlan.yearsArr[i].yearStart;
+                }
+                else{
+                    sTitle += " " + thePlan.yearsArr[i].yearEnd;
+                }
+            document.getElementById("semTitle" + i + j).innerHTML = sTitle;
 
             for(var h = 0; h < 3; h++){
 
@@ -242,4 +235,3 @@ Barry! Breakfast is ready!
 
 </body>
 </html>
-
