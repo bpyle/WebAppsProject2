@@ -1,3 +1,5 @@
+
+
 #titleBorder{
     height: 60px;
     border: 1px solid #ffffff;
@@ -53,6 +55,8 @@
 
 .rightSide{
     margin-left: 251px;
+
+
 }
 
 th.semesterBlock{
@@ -98,6 +102,12 @@ table#scheduleTable{
 .decoratedBox{
     padding: 5px;
 }
+
+
+.decoratedBox a{
+    text-decoration:none;
+}
+
 
 
 
