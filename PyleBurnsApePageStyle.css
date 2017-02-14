@@ -13,7 +13,7 @@
 
 
 .topBit{
-    height: 60%;
+    height: 75%;
     max-height: 600px;
 }
 
@@ -70,8 +70,9 @@ th.semesterBlock{
 .semesterTitle{
     font-weight: bolder;
     font-size: 80%;
-    padding-right: 70%;
-    padding-bottom: 70px;
+
+    padding-bottom: 2px;
+    text-align:left;
 }
 
 .validationMsg{
@@ -109,6 +110,10 @@ table#scheduleTable{
 }
 
 
+.courseBox{
+    display:block;
+    font-size:60%;
 
+}
 
 
