@@ -142,10 +142,11 @@ Barry! Breakfast is ready!
     var studentName = "Ben Pyle";
     var major = "Computer Science"
     var planName = studentName + " plan";
+    var numOfYears = 3;
     
-    initSchedule(catalogYear, studentName, major, planName);
+    initSchedule(catalogYear, studentName, major, planName, numOfYears);
 
-function initSchedule(catalogYEar, studentName, major, planName){
+function initSchedule(catalogYEar, studentName, major, planName, numOfYears){
     var termSpring = new term(
         [
             new course("CS-4220", "Web Apps"),
@@ -177,7 +178,7 @@ function initSchedule(catalogYEar, studentName, major, planName){
 
     var yearsForPlan = [];
     var firstYear = parseInt(catalogYear.substr(0, 4));
-    for(var i = 0; i < 4; i++){
+    for(var i = 0; i < numOfYears; i++){
         yearsForPlan[i] = new year([termFall, termSpring, termSummer], firstYear, firstYear+1);
         firstYear++;
 
@@ -219,7 +220,7 @@ function initSchedule(catalogYEar, studentName, major, planName){
         schedule.appendChild(tr);
     }
 
-    for(var i = 0; i < 4; i++){
+    for(var i = 0; i < numOfYears; i++){
         for(var j = 0; j < 3; j++){
             var sTitle = thePlan.yearsArr[i].term[j].termName ;
                 if(sTitle  == "Fall"){
